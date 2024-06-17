@@ -89,7 +89,6 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
                                         AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_GAME_STREAMING);
             RtcEngine.Initialize(context);
             RtcEngine.InitEventHandler(handler);
-            
             RtcEngine.SetParameters("che.audio.restartWhenInterrupted", true);
         }
 
