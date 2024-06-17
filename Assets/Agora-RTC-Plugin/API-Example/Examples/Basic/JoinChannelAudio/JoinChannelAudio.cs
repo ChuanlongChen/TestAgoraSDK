@@ -46,7 +46,7 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
                 SetBasicConfiguration();
             }
 
-#if UNITY_IOS || UNITY_ANDROID
+#if  UNITY_IOS || UNITY_ANDROID || UNITY_VISIONOS
             var text = GameObject.Find("Canvas/Scroll View/Viewport/Content/AudioDeviceManager").GetComponent<Text>();
             text.text = "Audio device manager not support in this platform";
 
@@ -82,9 +82,13 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
         {
             RtcEngine = Agora.Rtc.RtcEngine.CreateAgoraRtcEngine();
             UserEventHandler handler = new UserEventHandler(this);
+            
+            // try fix by ccl: 6/17
             RtcEngineContext context = new RtcEngineContext(_appID, 0,
                                         CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING,
-                                        AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_DEFAULT);
+                                        AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_GAME_STREAMING);
+            RtcEngine.SetParameters("che.audio.restartWhenInterrupted", true);
+            
             RtcEngine.Initialize(context);
             RtcEngine.InitEventHandler(handler);
         }
