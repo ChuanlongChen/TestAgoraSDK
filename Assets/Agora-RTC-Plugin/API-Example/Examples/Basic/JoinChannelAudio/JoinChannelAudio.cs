@@ -96,7 +96,7 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
         private void SetBasicConfiguration()
         {
             RtcEngine.EnableAudio();
-            RtcEngine.SetChannelProfile(CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_COMMUNICATION);
+            RtcEngine.SetChannelProfile(CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING);
             RtcEngine.SetClientRole(CLIENT_ROLE_TYPE.CLIENT_ROLE_BROADCASTER);
         }
 
