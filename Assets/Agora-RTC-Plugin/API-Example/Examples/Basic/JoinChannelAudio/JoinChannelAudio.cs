@@ -83,21 +83,21 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
             RtcEngine = Agora.Rtc.RtcEngine.CreateAgoraRtcEngine();
             UserEventHandler handler = new UserEventHandler(this);
             
-            // try fix by ccl: 6/17
+            // try fixing it by ccl: 6/17
             RtcEngineContext context = new RtcEngineContext(_appID, 0,
                                         CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING,
                                         AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_GAME_STREAMING);
-            RtcEngine.SetParameters("che.audio.restartWhenInterrupted", true);
-            
             RtcEngine.Initialize(context);
             RtcEngine.InitEventHandler(handler);
+            
+            RtcEngine.SetParameters("che.audio.restartWhenInterrupted", true);
         }
 
         private void SetBasicConfiguration()
         {
-            RtcEngine.EnableAudio();
             RtcEngine.SetChannelProfile(CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING);
             RtcEngine.SetClientRole(CLIENT_ROLE_TYPE.CLIENT_ROLE_BROADCASTER);
+            RtcEngine.EnableAudio();
         }
 
 #region -- Button Events ---
