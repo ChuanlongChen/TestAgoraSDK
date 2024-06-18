@@ -2577,6 +2577,10 @@ typedef NS_ENUM(NSInteger, AgoraMediaSourceType) {
    */
   AgoraMediaSourceTypeTranscodedVideo = 12,
   /**
+   * 13: Video for voice drive.
+   */
+  AgoraMediaSourceTypeSpeechDriven = 13,
+  /**
    * 100: unknown media source.
    */
   AgoraMediaSourceTypeUnknown = 100
@@ -2631,6 +2635,9 @@ typedef NS_ENUM(NSInteger, AgoraVideoSourceType) {
   /** Video for fourth screen sharing.
    */
   AgoraVideoSourceTypeScreenFourth = 14,
+  /** Video for voice drive.
+   */
+  AgoraVideoSourceTypeSpeechDriven = 15,
   /** Not define.
    */
   AgoraVideoSourceTypeUnknown = 100

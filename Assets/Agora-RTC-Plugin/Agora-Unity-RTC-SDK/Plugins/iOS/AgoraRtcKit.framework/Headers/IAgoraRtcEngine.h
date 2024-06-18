@@ -1151,6 +1151,22 @@ struct ChannelMediaOptions {
   */
   Optional<bool> publishMixedAudioTrack;
   /**
+  * Whether to allow local publish audio stream mixed by local mixed track.
+  * This is map for capture rule:
+  * - `3`: (1,1) Default both local and remote can be captured.
+  * - `2`: (0,1) local stream not captured, remote stream captured.
+  * - `1`: (1,0) local stream captured, remote stream not captured.
+  * - `0`: (0,0) local stream not captured, remote stream not captured.
+  * -  The connection for publishMixedAudioTrack(true) is never set capture local.
+  */
+  Optional<int> mixPolicyForMixedTrack;
+  /**
+  * Whether to publish the local lip sync video track.
+  * - `true`: Publish the video track of local lip sync  video track.
+  * - `false`: (Default) Do not publish the local lip sync  video track.
+  */
+  Optional<bool> publishLipSyncTrack;
+  /**
    * Whether to automatically subscribe to all remote audio streams when the user joins a channel:
    * - `true`: (Default) Subscribe to all remote audio streams.
    * - `false`: Do not subscribe to any remote audio stream.
@@ -1266,6 +1282,8 @@ struct ChannelMediaOptions {
 #endif
       SET_FROM(publishTranscodedVideoTrack);
       SET_FROM(publishMixedAudioTrack);
+      SET_FROM(mixPolicyForMixedTrack);
+      SET_FROM(publishLipSyncTrack);
       SET_FROM(publishCustomAudioTrack);
       SET_FROM(publishCustomAudioTrackId);
       SET_FROM(publishCustomVideoTrack);
@@ -1313,6 +1331,8 @@ struct ChannelMediaOptions {
 #endif
       ADD_COMPARE(publishTranscodedVideoTrack);
       ADD_COMPARE(publishMixedAudioTrack);
+      ADD_COMPARE(mixPolicyForMixedTrack);
+      ADD_COMPARE(publishLipSyncTrack);
       ADD_COMPARE(publishCustomAudioTrack);
       ADD_COMPARE(publishCustomAudioTrackId);
       ADD_COMPARE(publishCustomVideoTrack);
@@ -1363,6 +1383,8 @@ struct ChannelMediaOptions {
 #endif
         REPLACE_BY(publishTranscodedVideoTrack);
         REPLACE_BY(publishMixedAudioTrack);
+        REPLACE_BY(mixPolicyForMixedTrack);
+        REPLACE_BY(publishLipSyncTrack);
         REPLACE_BY(publishCustomAudioTrack);
         REPLACE_BY(publishCustomAudioTrackId);
         REPLACE_BY(publishCustomVideoTrack);
@@ -5901,6 +5923,23 @@ class IRtcEngine : public agora::base::IEngineBase {
    *  - < 0: Failure.
    */
   virtual int uploadLogFile(agora::util::AString& requestId) = 0;
+
+   /** * Write the log to SDK . @technical preview
+   *
+   * You can Write the log to SDK log files of the specified level.
+   *
+   * @param level The log level:
+   * - `LOG_LEVEL_NONE (0x0000)`: Do not output any log file.
+   * - `LOG_LEVEL_INFO (0x0001)`: (Recommended) Output log files of the INFO level.
+   * - `LOG_LEVEL_WARN (0x0002)`: Output log files of the WARN level.
+   * - `LOG_LEVEL_ERROR (0x0004)`: Output log files of the ERROR level.
+   * - `LOG_LEVEL_FATAL (0x0008)`: Output log files of the FATAL level.
+   *
+   *  @return
+   *  - 0: Success.
+   *  - < 0: Failure.
+   */
+  virtual int writeLog(commons::LOG_LEVEL level, const char* fmt, ...) = 0;
 
   /**
    * Updates the display mode of the local video view.

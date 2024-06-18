@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310468f085ef24732beac714c9bb64fd, type: 3}
   m_Name: AppIdInput
   m_EditorClassIdentifier: 
-  appID: 00e97fd319264c1ea2be69a370bd712e
+  appID: 4aea9076c9f844ce97afd798d7cbf440
   token: 
-  channelName: visionpro
+  channelName: Unity_Channel

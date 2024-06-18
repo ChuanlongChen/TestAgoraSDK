@@ -31,6 +31,10 @@ class ICameraCapturer : public RefCountInterface {
      * The camera source is the front camera.
      */
     CAMERA_FRONT,
+    /**
+     * The camera source is the extra camera.
+     */
+    CAMERA_EXTRA,
   };
 
   /**

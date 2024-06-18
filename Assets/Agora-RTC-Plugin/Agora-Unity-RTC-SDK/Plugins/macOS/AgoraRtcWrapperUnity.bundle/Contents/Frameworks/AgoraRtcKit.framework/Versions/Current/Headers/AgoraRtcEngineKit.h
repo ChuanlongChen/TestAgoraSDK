@@ -391,6 +391,23 @@
 
 @end
 
+/**
+ * The AgoraFaceInfoDelegate protocol enables face info callback event notifications to your application.
+ */
+@protocol AgoraFaceInfoDelegate <NSObject>
+@optional
+
+/**
+ * Occurs when the face info is received.
+ * @param outFaceInfo A pointer to the face info: NSString.
+ * @return
+ * - true: The face info is valid and sent.
+ * - false: The face info is invalid or sent.
+ */
+- (BOOL)onFaceInfo:(NSString* _Nonnull)outFaceInfo NS_SWIFT_NAME(onFaceInfo(_:));
+
+@end
+
 @protocol AgoraRtcMediaPlayerDelegate <NSObject>
 
 @optional
@@ -6660,6 +6677,16 @@ Ensure that you call this method to stop the loopback test after calling the [st
  */
 - (BOOL)setEncodedVideoFrameDelegate:(id<AgoraEncodedVideoFrameDelegate> _Nullable)delegate NS_SWIFT_NAME(setEncodedVideoFrameDelegate(_:));
 
+#pragma mark Custom Face Info
+
+/**
+  * @brief register & unregister the face info observer
+  *
+  * @param delegate observer object, pass nil to unregister
+  * @return int <= 0 On behalf of an error
+  */
+- (BOOL)setFaceInfoDelegate:(id<AgoraFaceInfoDelegate> _Nullable)delegate NS_SWIFT_NAME(setFaceInfoDelegate(_:));
+
 #pragma mark Custom Media Metadata
 
 /**-----------------------------------------------------------------------------
@@ -6797,6 +6824,18 @@ For example, if you set the log filter level to `Warning`, you see the logs with
  *  requestID  the id of this upload.
  */
 - (NSString * _Nullable)uploadLogFile NS_SWIFT_NAME(uploadLogFile());
+
+/** * Write the log to SDK . @technical preview
+
+ You can Write the log to SDK log files of the specified level
+
+ @param level Log level: \ref AgoraLogLevel.
+
+ @return
+ * - 0: Success.
+ * - < 0: Failure.
+ */
+- (int)writeLog:(AgoraLogLevel)level content:(NSString * _Nonnull)content NS_SWIFT_NAME(writeLog(_:content:));
 
 /**
  * Gets the current call ID.
@@ -7642,6 +7681,20 @@ description:(NSString * _Nullable)description NS_SWIFT_NAME(rate(_:rating:descri
  * - The empty pointer NULL, if the method call fails.
  */
 - (AgoraMediaRecorder * _Nullable)createMediaRecorder:(AgoraRecorderStreamInfo * _Nonnull)info NS_SWIFT_NAME(createMediaRecorder(withInfo:));
+/** 
+ * Adds multiple SDK delegate.
+ * 
+ * @param delegate The AgoraRtcEngineDelegate object. 
+ */
+- (void)addDelegate:(id<AgoraRtcEngineDelegate> _Nonnull)delegate NS_SWIFT_NAME(addDelegate(_:));
+
+/** 
+ * Removes multiple SDK delegate.
+ * 
+ * @param delegate The AgoraRtcEngineDelegate object. 
+ */
+- (void)removeDelegate:(id<AgoraRtcEngineDelegate> _Nonnull)delegate NS_SWIFT_NAME(removeDelegate(_:));
+
 @end
 
 @class AgoraMediaRecorder;

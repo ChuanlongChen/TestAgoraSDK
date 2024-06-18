@@ -46,7 +46,7 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
                 SetBasicConfiguration();
             }
 
-#if  UNITY_IOS || UNITY_ANDROID || UNITY_VISIONOS
+#if UNITY_IOS || UNITY_ANDROID
             var text = GameObject.Find("Canvas/Scroll View/Viewport/Content/AudioDeviceManager").GetComponent<Text>();
             text.text = "Audio device manager not support in this platform";
 
@@ -82,11 +82,9 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
         {
             RtcEngine = Agora.Rtc.RtcEngine.CreateAgoraRtcEngine();
             UserEventHandler handler = new UserEventHandler(this);
-            
-            // try fixing it by ccl: 6/17
             RtcEngineContext context = new RtcEngineContext(_appID, 0,
                                         CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING,
-                                        AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_GAME_STREAMING);
+                                        AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_DEFAULT);
             RtcEngine.Initialize(context);
             RtcEngine.InitEventHandler(handler);
         }
@@ -94,26 +92,8 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
         private void SetBasicConfiguration()
         {
             RtcEngine.EnableAudio();
-            /*
-                RtcEngine.EnableVideo();
-
-                VideoEncoderConfiguration config = new VideoEncoderConfiguration();
-
-                config.dimensions = new VideoDimensions(640, 360);
-                config.frameRate = 15;
-                config.bitrate = 0;
-                RtcEngine.SetVideoEncoderConfiguration(config);
-            */
-            
-            RtcEngine.SetChannelProfile(CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING);
+            RtcEngine.SetChannelProfile(CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_COMMUNICATION);
             RtcEngine.SetClientRole(CLIENT_ROLE_TYPE.CLIENT_ROLE_BROADCASTER);
-            
-            // For now this private API is needed to make voice chat working
-            if (Application.platform == RuntimePlatform.VisionOS)
-            {
-                RtcEngine.SetParameters("che.audio.restartWhenInterrupted", true);
-            }
-     
         }
 
 #region -- Button Events ---
