@@ -7,8 +7,7 @@ https://download.agora.io/sdk/release/Agora_Unity_RTC_SDK_4.2.6.133_FULL_2024050
   这个包里面 plugin下面 visionOs 相关的文件应该有问题 
   这个包可以 https://github.com/AgoraIO-Community/HelloAgoraVision/releases
   用好的包里面的这个文件夹进替换就行
-
-Assets/Agora-RTC-Plugin/Agora-Unity-RTC-SDK/Plugins/visionOS/
+  Assets/Agora-RTC-Plugin/Agora-Unity-RTC-SDK/Plugins/visionOS/
 ```
 
 Agora 测试token:
