@@ -83,17 +83,31 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
             RtcEngine = Agora.Rtc.RtcEngine.CreateAgoraRtcEngine();
             UserEventHandler handler = new UserEventHandler(this);
             RtcEngineContext context = new RtcEngineContext(_appID, 0,
-                                        CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING,
-                                        AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_DEFAULT);
+                CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING,
+                AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_GAME_STREAMING,
+                AREA_CODE.AREA_CODE_GLOB);
             RtcEngine.Initialize(context);
             RtcEngine.InitEventHandler(handler);
         }
 
-        private void SetBasicConfiguration()
+        protected virtual void SetBasicConfiguration()
         {
+            
             RtcEngine.EnableAudio();
-            RtcEngine.SetChannelProfile(CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_COMMUNICATION);
-            RtcEngine.SetClientRole(CLIENT_ROLE_TYPE.CLIENT_ROLE_BROADCASTER);
+            /*
+            RtcEngine.EnableVideo();
+            VideoEncoderConfiguration config = new VideoEncoderConfiguration();
+            config.dimensions = new VideoDimensions(640, 360);
+            config.frameRate = 15;
+            config.bitrate = 0;
+            RtcEngine.SetVideoEncoderConfiguration(config);
+            */
+            RtcEngine.SetChannelProfile(CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING);
+            RtcEngine.SetClientRole(CLIENT_ROLE_TYPE.CLIENT_ROLE_BROADCASTER);// For now this private API is needed to make voice chat working
+            if (Application.platform == RuntimePlatform.VisionOS)
+            {
+                RtcEngine.SetParameters("che.audio.restartWhenInterrupted", true);
+            }
         }
 
 #region -- Button Events ---
