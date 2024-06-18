@@ -89,14 +89,27 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
                                         AUDIO_SCENARIO_TYPE.AUDIO_SCENARIO_GAME_STREAMING);
             RtcEngine.Initialize(context);
             RtcEngine.InitEventHandler(handler);
-            RtcEngine.SetParameters("che.audio.restartWhenInterrupted", true);
         }
 
         private void SetBasicConfiguration()
         {
             RtcEngine.EnableAudio();
+            
+            RtcEngine.EnableVideo();
+            VideoEncoderConfiguration config = new VideoEncoderConfiguration();
+            config.dimensions = new VideoDimensions(640, 360);
+            config.frameRate = 15;
+            config.bitrate = 0;
+            RtcEngine.SetVideoEncoderConfiguration(config);
+            
             RtcEngine.SetChannelProfile(CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING);
             RtcEngine.SetClientRole(CLIENT_ROLE_TYPE.CLIENT_ROLE_BROADCASTER);
+            
+            // For now this private API is needed to make voice chat working
+            if (Application.platform == RuntimePlatform.VisionOS)
+            {
+                RtcEngine.SetParameters("che.audio.restartWhenInterrupted", true);
+            }
      
         }
 
