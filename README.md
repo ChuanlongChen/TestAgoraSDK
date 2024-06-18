@@ -8,13 +8,10 @@ https://download.agora.io/sdk/release/Agora_Unity_RTC_SDK_4.2.6.133_FULL_2024050
 
 Agora 测试token:
 ```
-申请时间 2024/6/17，19:30，有效期 24小时
+有效期：一直有效
  
-Appid: 7d1813738a6a49c5982c5836572bffd4
-
-Channel: test1
-
-Token:
-007eJxTYMjc9239MS/1D8WVmQq6a+1e5y897cTSs+Yy30H2O2EFXF0KDOYphhaGxubGFolmiSaWyaaWFkbJphbGZqbmRklpaSkm7fIFaQ2BjAwhy7YyMzJAIIjPylCSWlxiyMAAAFpoHvs=
+Appid: 00e97fd319264c1ea2be69a370bd712e
+Channel: visionpro
+Token: 留空，不填
 
 ```

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310468f085ef24732beac714c9bb64fd, type: 3}
   m_Name: AppIdInput
   m_EditorClassIdentifier: 
-  appID: 7d1813738a6a49c5982c5836572bffd4
-  token: 007eJxTYMjc9239MS/1D8WVmQq6a+1e5y897cTSs+Yy30H2O2EFXF0KDOYphhaGxubGFolmiSaWyaaWFkbJphbGZqbmRklpaSkm7fIFaQ2BjAwhy7YyMzJAIIjPylCSWlxiyMAAAFpoHvs=
-  channelName: test1
+  appID: 00e97fd319264c1ea2be69a370bd712e
+  token: 
+  channelName: visionpro
