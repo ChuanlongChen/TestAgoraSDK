@@ -365,22 +365,6 @@ __attribute__((visibility("default"))) @interface AgoraRtcChannelMediaOptions : 
 */
 @property(assign, nonatomic) BOOL publishMixedAudioTrack;
 /**
-* Whether to allow local publish audio stream mixed by local mixed track.
-* This is map for capture rule:
-* - `3`: (1,1) Default both local and remote can be captured.
-* - `2`: (0,1) local stream not captured, remote stream captured.
-* - `1`: (1,0) local stream captured, remote stream not captured.
-* - `0`: (0,0) local stream not captured, remote stream not captured.
-* -  The connection for publishMixedAudioTrack(true) is never set capture local.
-*/
-@property(assign, nonatomic) NSInteger mixPolicyForMixedTrack;
-/**
-* Determines whether to publish the local lip sync video track.
-* - `YES`: Publish the video track of local lip sync video track.
-* - `NO`: (Default) Do not publish the local lip sync video track.
-*/
-@property(assign, nonatomic) BOOL publishLipSyncTrack;
-/**
  * Determines whether to subscribe all remote audio streams automatically.
  * This property replaces calling \ref AgoraRtcEngineKit.setDefaultMuteAllRemoteAudioStreams: setDefaultMuteAllRemoteAudioStreams
  * before joining a channel.
@@ -2110,7 +2094,7 @@ __attribute__((visibility("default"))) @interface AgoraOutputVideoFrame : NSObje
 @property (nonatomic, assign) uint8_t* _Nullable alphaBuffer;
 
 /**
- *  The metadata information for FaceCapture and LipSync, such as blendshapes, rotation, and translation, whose key is KEY_FACE_CAPTURE.
+ *  The metadata information for FaceCapture, such as blendshapes, rotation, and translation, whose key is KEY_FACE_CAPTURE.
  */
 @property(nonatomic, strong) NSDictionary *_Nonnull metaInfo;
 

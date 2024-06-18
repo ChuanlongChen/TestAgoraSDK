@@ -34,7 +34,6 @@ struct AudioEncoderConfiguration;
 struct VideoEncoderConfiguration;
 
 class ILocalAudioTrack;
-class IAudioMixerSource;
 struct RemoteAudioTrackStats;
 class IRemoteAudioTrack;
 struct LocalVideoTrackStats;
@@ -1119,15 +1118,17 @@ class ILocalUser {
   */
   virtual int SetAudioNsMode(bool NsEnable, NS_MODE NsMode, NS_LEVEL NsLevel, NS_DELAY NsDelay) = 0;
   /**
-   * register a mix source to capture the track of this user.
+   * enable the mix track that mix special track
    *
-   * @param mixSource The mix source that is the sink attach to track.
-   * @param mixPolicy Policy of whether mixed local or remote.
+   * @param track The special mixed audio track.
+   * @param enalble Action of start mixing this user's audio.
+   * @param MixLocal Mix publish stream.
+   * @param MixRemote Mix remote stream.
    * @return
    * - 0: success
    * - <0: failure
   */
-  virtual int registerMixSource(agora_refptr<IAudioMixerSource> mixSource, int mixPolicy) = 0;
+  virtual int EnableLocalMixedAudioTrack(agora_refptr<ILocalAudioTrack>& track, bool enable, bool MixLocal, bool MixRemote) = 0;
 };
 
 /**

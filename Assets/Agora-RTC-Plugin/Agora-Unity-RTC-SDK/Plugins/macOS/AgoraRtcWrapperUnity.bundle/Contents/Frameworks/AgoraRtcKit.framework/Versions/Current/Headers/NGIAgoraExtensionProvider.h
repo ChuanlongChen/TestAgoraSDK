@@ -41,7 +41,6 @@ class IExtensionProvider : public RefCountInterface {
     AUDIO_FILTER,
     VIDEO_PRE_PROCESSING_FILTER,
     VIDEO_POST_PROCESSING_FILTER,
-    LIP_SYNC_PROCESSING_FILTER,
     AUDIO_SINK,
     VIDEO_SINK,
     /*
@@ -105,10 +104,6 @@ class IExtensionProvider : public RefCountInterface {
   }
 
   virtual agora_refptr<IVideoSinkBase> createVideoSink(const char* name) {
-    return NULL;
-  }
-  
-  virtual agora_refptr<ILipSyncFilter> createLipSyncFilter(const char* name) {
     return NULL;
   }
 

@@ -974,22 +974,6 @@ If the remote user does not receive the data stream within five seconds, the SDK
 - (int)enableEncryptionEx:(bool)enabled encryptionConfig:(AgoraEncryptionConfig *_Nonnull)config connection:(AgoraRtcConnection* _Nonnull)connection NS_SWIFT_NAME(enableEncryptionEx(_:encryptionConfig:connection:));
 
 /**
- * Adds multiple SDK delegate.
- * 
- * @param delegate The AgoraRtcEngineDelegate object. 
- * @param connection The AgoraRtcConnection object.
- */
-- (void)addDelegateEx:(id<AgoraRtcEngineDelegate> _Nonnull)delegate connection:(AgoraRtcConnection * _Nonnull)connection NS_SWIFT_NAME(addDelegateEx(_:connection:));
-
-/** 
- * Removes multiple SDK delegate.
- * 
- * @param delegate The AgoraRtcEngineDelegate object. 
- * @param connection The AgoraRtcConnection object.
- */
-- (void)removeDelegateEx:(id<AgoraRtcEngineDelegate> _Nonnull)delegate connection:(AgoraRtcConnection * _Nonnull)connection NS_SWIFT_NAME(removeDelegateEx(_:connection:));
-
-/**
  * Gets the current call ID.
  *
  * When a user joins a channel, a call ID is generated to identify the call.

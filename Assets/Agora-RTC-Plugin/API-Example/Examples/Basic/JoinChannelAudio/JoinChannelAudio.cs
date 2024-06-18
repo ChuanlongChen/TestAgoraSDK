@@ -92,7 +92,7 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
 
         protected virtual void SetBasicConfiguration()
         {
-            
+
             RtcEngine.EnableAudio();
             /*
             RtcEngine.EnableVideo();
@@ -110,7 +110,7 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
             }
         }
 
-#region -- Button Events ---
+        #region -- Button Events ---
 
         public void StartEchoTest()
         {
@@ -178,7 +178,7 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
             Log.UpdateLog("SelectAudioPlaybackDevice ret:" + ret + " , DeviceId: " + deviceId);
         }
 
-#endregion
+        #endregion
 
         private void OnDestroy()
         {
@@ -190,7 +190,7 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
         }
     }
 
-#region -- Agora Event ---
+    #region -- Agora Event ---
 
     internal class UserEventHandler : IRtcEngineEventHandler
     {
@@ -243,5 +243,5 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
         }
     }
 
-#endregion
+    #endregion
 }
