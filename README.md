@@ -10,7 +10,7 @@ Agora 测试token:
 ```
 有效期：一直有效
  
-Appid: 00e97fd319264c1ea2be69a370bd712e
+Appid: 4aea9076c9f844ce97afd798d7cbf440
 Channel: visionpro
 Token: 留空，不填
 
