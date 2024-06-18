@@ -94,15 +94,15 @@ namespace Agora_RTC_Plugin.API_Example.Examples.Basic.JoinChannelAudio
         private void SetBasicConfiguration()
         {
             RtcEngine.EnableAudio();
-            
-            RtcEngine.EnableVideo();
             /*
-            VideoEncoderConfiguration config = new VideoEncoderConfiguration();
-            
-            config.dimensions = new VideoDimensions(640, 360);
-            config.frameRate = 15;
-            config.bitrate = 0;
-            RtcEngine.SetVideoEncoderConfiguration(config);
+                RtcEngine.EnableVideo();
+
+                VideoEncoderConfiguration config = new VideoEncoderConfiguration();
+
+                config.dimensions = new VideoDimensions(640, 360);
+                config.frameRate = 15;
+                config.bitrate = 0;
+                RtcEngine.SetVideoEncoderConfiguration(config);
             */
             
             RtcEngine.SetChannelProfile(CHANNEL_PROFILE_TYPE.CHANNEL_PROFILE_LIVE_BROADCASTING);
